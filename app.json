@@ -5,7 +5,7 @@
     "platform": {
         "uuid": "Example-For-Alex",
         "autoShow": true,
-        "providerUrl": "http://localhost:2222/provider.html",
+        "providerUrl": "http://localhost:1234/provider.html",
         "frame": false,
         "saveWindowState": true
     },
