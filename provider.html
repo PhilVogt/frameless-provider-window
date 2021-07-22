@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Demo</title>
+    <style>
+        .header {
+            -webkit-app-region: drag;
+            height: 20px;
+            background-color: goldenrod;
+            color: steelblue;
+            padding: 5px;
+        }
+
+        .windowControlButtons {
+            margin: 0px 5px;
+            -webkit-app-region: no-drag;
+            float: right;
+            display: block;
+            cursor: pointer;
+        }
+
+        body {
+            margin: 0px;
+            background-color: steelblue;
+            color: white;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <span id="maximize" class="windowControlButtons">Maximize</span>
+        <span id="close" class="windowControlButtons">Close</span>
+    </div>
+    <div style="margin: 5px;">
+        <p>
+            The gold bar is draggable. The HTML and styles that enable dragging and interaction with
+            header elements are as follows
+        </p>
+        Style:
+        <pre>
+&lt;style&gt;
+	.header {
+		-webkit-app-region: drag;
+		height: 20px;
+		background-color: goldenrod;
+		color: steelblue;
+		padding: 5px;
+	}
+	.windowControlButtons {
+		-webkit-app-region: no-drag;
+		float: right;
+		display: block;
+		cursor: pointer;
+	}
+&lt;/style&gt;
+
+	</pre>
+        HTML:
+        <pre>
+            &lt;div class="header"&gt;
+                &lt;span id="close" class="windowControlButtons"&gt;Close&lt;/span&gt;
+            &lt;/div&gt;
+        </pre>
+        <pre>
+            &lt;div class="header"&gt;
+                &lt;span id="maximize" class="windowControlButtons"&gt;Maximize&lt;/span&gt;
+            &lt;/div&gt;
+        </pre>
+    </div>
+
+    <script>
+        async function init() {
+            try {
+                console.warn(`This console is only for the Platform Provider. ` +
+                    `This Javascript context is separate from that of any window launched in the platform. ` +
+                    `To see the console for the window's please open devtools from their context.`)
+
+                await fin.Platform.init();
+                var close = document.getElementById('close');
+                var maximize = document.getElementById('maximize');
+
+                const win = await fin.Window.getCurrent();
+                const state = await win.getState();
+                if (state === "maximized") {
+                    maximize.innerHTML = "Restore";
+                } else {
+                    maximize.innerHTML = "Maximize";
+                }
+
+                close.addEventListener('click', async function () {
+                    win.close();
+                });
+
+                maximize.addEventListener('click', async function () {
+                    const state = await win.getState();
+                    if (state === "maximized") {
+                        win.restore();
+                        maximize.innerHTML = "Maximize";
+                    } else {
+                        win.maximize();
+                        maximize.innerHTML = "Restore";
+                    }
+                });
+            } catch (e) {
+                console.log('Error initializing Platform Provider: ' + e.toString());
+            }
+        }
+        init();
+    </script>
+
+
+</body>
+
+</html>

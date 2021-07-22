@@ -1,0 +1,45 @@
+{
+    "runtime": {
+        "version": "stable"
+    },
+    "platform": {
+        "uuid": "Example-For-Alex",
+        "autoShow": true,
+        "providerUrl": "http://localhost:2222/provider.html",
+        "frame": false
+    },
+    "snapshot": {
+        "windows": [
+            {
+                "saveWindowState": false,
+                "backgroundThrottling": true,
+                "layout": {
+                    "content": [
+                        {
+                            "type": "row",
+                            "id": "no-drop-target",
+                            "content": [
+                                {
+                                    "type": "component",
+                                    "componentName": "view",
+                                    "componentState": {
+                                        "name": "view-1626887992220-2890",
+                                        "url": "http://google.com"
+                                    }
+                                },
+                                {
+                                    "type": "component",
+                                    "componentName": "view",
+                                    "componentState": {
+                                        "name": "view-1626887992220-7691",
+                                        "url": "http://www.bbc.co.uk"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
