@@ -6,7 +6,8 @@
         "uuid": "Example-For-Alex",
         "autoShow": true,
         "providerUrl": "http://localhost:2222/provider.html",
-        "frame": false
+        "frame": false,
+        "saveWindowState": true
     },
     "snapshot": {
         "windows": [
